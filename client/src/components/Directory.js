@@ -21,7 +21,13 @@ class Directory extends Component {
                 {this.props.fileName === undefined
                     ? this.props.nodes.map(node => {
                         return <div key={this.getNextKey()}> 
-                            <button onClick={() => this.props.onClickHandler(node["name"], node["type"])} style={{ margin: "5px" }}>
+                            <button 
+                                onClick={(e) => {
+                                    e.target.disabled = true;
+                                    this.props.onClickHandler(node["name"], node["type"])}
+                                } 
+                                style={{ margin: "5px" }}
+                            >
                                 {node.type === "file" ? <FaFileAlt /> : <GoFileDirectory />} {node["name"]} 
                             </button>
                         </div>
